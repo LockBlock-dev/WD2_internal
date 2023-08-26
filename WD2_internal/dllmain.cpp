@@ -1,9 +1,30 @@
 #include <windows.h>
 #include <iostream>
 #include "FeatureManager.h"
+#include "HookManager.h"
+#include "Dependencies/minhook/include/MinHook.h"
 
-#define DEBUG true
+#define DEBUG false
 
+
+void exitProgram(HMODULE instance)
+{
+    if (DEBUG)
+    {
+        fclose(stderr);
+        fclose(stdout);
+        FreeConsole();
+    }
+
+    HookManager& hookManager = HookManager::getInstance();
+
+    hookManager.disableAll();
+
+    MH_DisableHook(MH_ALL_HOOKS);
+    MH_Uninitialize();
+
+    FreeLibraryAndExitThread(instance, EXIT_SUCCESS);
+}
 
 void MainThread(HMODULE instance)
 {
@@ -17,9 +38,18 @@ void MainThread(HMODULE instance)
         freopen_s(&fDummy, "CONOUT$", "w", stdout);
     }
 
+    if (MH_Initialize() != MH_OK)
+    {
+        exitProgram(instance);
+    }
+
     FeatureManager& featureManager = FeatureManager::getInstance();
 
     FeaturesMap features = featureManager.getFeatures();
+
+    HookManager& hookManager = HookManager::getInstance();
+
+    hookManager.enableAll();
 
     while (TRUE)
     {
@@ -42,13 +72,7 @@ void MainThread(HMODULE instance)
         Sleep(10);
     }
 
-    if (DEBUG)
-    {
-        fclose(stderr);
-        fclose(stdout);
-        FreeConsole();
-    }
-    FreeLibraryAndExitThread(instance, EXIT_SUCCESS);
+    exitProgram(instance);
 }
 
 BOOL APIENTRY DllMain(

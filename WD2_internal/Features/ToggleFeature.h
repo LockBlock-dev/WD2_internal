@@ -5,7 +5,7 @@
 class ToggleFeature : public Feature
 {
 private:
-	bool enabled = true;
+	bool enabled = false;
 protected:
 	virtual void updateWhenEnabled() PURE;
 	virtual void updateWhenDisabled() PURE;

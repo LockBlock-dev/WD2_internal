@@ -3,10 +3,10 @@
 
 std::string& Feature::name()
 {
-	return _name;
+	return this->_name;
 }
 
 const std::string& Feature::name() const
 {
-	return _name;
+	return this->_name;
 }

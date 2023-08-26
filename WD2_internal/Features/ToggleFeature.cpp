@@ -3,15 +3,15 @@
 
 void ToggleFeature::enable()
 {
-	enabled = true;
+	this->enabled = true;
 }
 
 void ToggleFeature::disable()
 {
-	enabled = false;
+	this->enabled = false;
 }
 
 void ToggleFeature::update()
 {
-	enabled ? updateWhenEnabled() : updateWhenDisabled();
+	this->enabled ? this->updateWhenEnabled() : this->updateWhenDisabled();
 }

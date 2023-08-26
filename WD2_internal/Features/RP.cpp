@@ -6,7 +6,7 @@
 
 RP::RP()
 {
-	_name = "RP";
+	this->_name = "RP";
 }
 
 void RP::updateWhenEnabled()

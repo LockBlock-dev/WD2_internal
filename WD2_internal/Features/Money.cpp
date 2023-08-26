@@ -6,7 +6,7 @@
 
 Money::Money()
 {
-	_name = "money";
+	this->_name = "Money";
 }
 
 void Money::updateWhenEnabled()

@@ -8,8 +8,11 @@ FeatureManager::FeatureManager()
     std::shared_ptr<Money> money = std::make_shared<Money>();
     std::shared_ptr<RP> rp = std::make_shared<RP>();
 
-    features[money->name()] = money;
-    features[rp->name()] = rp;
+    money->enable();
+    rp->enable();
+
+    this->features[money->name()] = money;
+    this->features[rp->name()] = rp;
 }
 
 FeatureManager& FeatureManager::getInstance()
@@ -21,7 +24,7 @@ FeatureManager& FeatureManager::getInstance()
 
 FeaturesMap FeatureManager::getFeatures()
 {
-    return features;
+    return this->features;
 }
 
 ToggleableFeaturesMap FeatureManager::getToggleableFeatures()
