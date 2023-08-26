@@ -157,6 +157,7 @@
     <ClCompile Include="Hooks\HookWrapper.cpp" />
     <ClCompile Include="Hooks\InfiniteBotnets.cpp" />
     <ClCompile Include="Memory.cpp" />
+    <ClCompile Include="Features\NoReload.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Context.h" />
@@ -178,6 +179,7 @@
     <ClInclude Include="Hooks\HookWrapper.h" />
     <ClInclude Include="Hooks\InfiniteBotnets.h" />
     <ClInclude Include="Memory.h" />
+    <ClInclude Include="Features\NoReload.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Dependencies\minhook\dll_resources\MinHook.def" />

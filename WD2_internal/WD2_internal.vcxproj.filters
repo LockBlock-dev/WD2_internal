@@ -63,6 +63,9 @@
     <ClCompile Include="Hooks\InfiniteBotnets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Features\NoReload.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FeatureManager.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Hooks\InfiniteBotnets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Features\NoReload.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

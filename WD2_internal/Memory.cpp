@@ -27,3 +27,23 @@ uintptr_t Memory::getAddress(const uintptr_t address, const std::vector<uintptr_
         throw std::invalid_argument("Invalid address provided.");
     }
 }
+
+void Memory::patch(BYTE* dst, BYTE* src, size_t size)
+{
+    DWORD oldProtect;
+    VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldProtect);
+
+    memcpy(dst, src, size);
+
+    VirtualProtect(dst, size, oldProtect, &oldProtect);
+}
+
+void Memory::nop(BYTE* dst, size_t size)
+{
+    DWORD oldProtect;
+    VirtualProtect(dst, size, PAGE_EXECUTE_READWRITE, &oldProtect);
+
+    memset(dst, 0x90, size);
+
+    VirtualProtect(dst, size, oldProtect, &oldProtect);
+}

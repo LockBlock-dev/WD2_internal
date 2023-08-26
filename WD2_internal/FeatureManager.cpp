@@ -1,17 +1,21 @@
 #include "FeatureManager.h"
 #include "Features/Money.h"
+#include "Features/NoReload.h"
 #include "Features/RP.h"
 
 
 FeatureManager::FeatureManager()
 {
     std::shared_ptr<Money> money = std::make_shared<Money>();
+    std::shared_ptr<NoReload> noReload = std::make_shared<NoReload>();
     std::shared_ptr<RP> rp = std::make_shared<RP>();
 
     money->enable();
+    noReload->enable();
     rp->enable();
 
     this->features[money->name()] = money;
+    this->features[noReload->name()] = noReload;
     this->features[rp->name()] = rp;
 }
 

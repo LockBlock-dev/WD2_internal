@@ -14,6 +14,7 @@ It might work on a legitimate game version if you disable EAC by passing `-eac_l
 - God mode
 - Infinite botnets
 - Lock your balance at 1B$
+- No reload
 - (Broken) Lock your Research Points to 100
 
 ## How to use

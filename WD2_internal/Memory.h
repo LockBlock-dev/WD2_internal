@@ -9,6 +9,10 @@ namespace Memory
 {
     uintptr_t getAddress(const uintptr_t address, const std::vector<uintptr_t> offsets = {});
 
+    void patch(BYTE* dst, BYTE* src, size_t size);
+
+    void nop(BYTE* dst, size_t size);
+
     template <typename T>
     T read(const uintptr_t address)
     {
